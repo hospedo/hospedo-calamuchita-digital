@@ -1,8 +1,12 @@
 
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { ArrowDown } from 'lucide-react';
+import { useState } from 'react';
 
 const Hero = () => {
+  const [email, setEmail] = useState('');
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -10,8 +14,13 @@ const Hero = () => {
     }
   };
 
-  const openWhatsApp = () => {
-    window.open('https://wa.me/5491123456789?text=Hola%2C%20quiero%20saber%20más%20sobre%20HOSPEDO', '_blank');
+  const handleSignUp = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      // Por ahora solo scroll a tutoriales, luego se puede implementar el registro real
+      scrollToSection('tutoriales');
+      console.log('Email registrado:', email);
+    }
   };
 
   return (
@@ -41,19 +50,36 @@ const Hero = () => {
             Sin complicaciones técnicas, con el toque humano de siempre.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button onClick={openWhatsApp} size="lg" className="btn-whatsapp text-lg px-8 py-4">
-              Hablar por WhatsApp
-            </Button>
+          {/* CTA Button and Sign Up Form */}
+          <div className="flex flex-col items-center gap-6 mb-12">
             <Button 
               onClick={() => scrollToSection('tutoriales')} 
-              variant="outline" 
               size="lg" 
-              className="text-lg px-8 py-4 border-2 border-hospedo-blue text-hospedo-blue hover:bg-hospedo-blue hover:text-white"
+              className="btn-hospedo text-lg px-8 py-4"
             >
-              Ver Tutoriales Gratis
+              Aprender GRATIS cómo aumentar tus reservas
             </Button>
+            
+            <form onSubmit={handleSignUp} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+              <Input
+                type="email"
+                placeholder="Tu email para comenzar"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-1 text-center sm:text-left"
+              />
+              <Button 
+                type="submit"
+                className="btn-whatsapp px-6"
+              >
+                Comenzar
+              </Button>
+            </form>
+            
+            <p className="text-sm text-gray-500">
+              Accede a nuestros tutoriales gratuitos y comienza a digitalizar tu alojamiento
+            </p>
           </div>
 
           {/* Value Proposition Points */}
