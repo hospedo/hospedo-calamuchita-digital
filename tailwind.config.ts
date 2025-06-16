@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,21 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// HOSPEDO brand colors
+				hospedo: {
+					orange: '#FF6B35',
+					'orange-light': '#FF8A65',
+					'orange-dark': '#E5532B',
+					blue: '#4FC3F7',
+					'blue-light': '#81D4FA',
+					'blue-dark': '#29B6F6',
+					whatsapp: '#25D366',
+					'whatsapp-dark': '#1DA851',
+					gray: {
+						light: '#F5F5F5',
+						dark: '#424242'
+					}
 				}
 			},
 			borderRadius: {
@@ -84,11 +100,37 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'slide-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateX(-20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'slide-in': 'slide-in 0.6s ease-out'
+			},
+			backgroundImage: {
+				'gradient-hospedo': 'linear-gradient(135deg, #FF6B35 0%, #4FC3F7 100%)',
+				'gradient-hospedo-reverse': 'linear-gradient(135deg, #4FC3F7 0%, #FF6B35 100%)',
 			}
 		}
 	},
